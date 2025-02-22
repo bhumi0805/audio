@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
   <style>
-   .main{
+    .main {
       /* background: linear-gradient(black,rgba(0, 0, 0, 0.467)),url(./musician-isolated-dark-studio-neon-light_155003-34035.jpg); */
-    
+
       background-repeat: no-repeat;
       background-size: cover;
       height: 100vh;
@@ -15,127 +16,462 @@
       align-items: center;
       flex-direction: column !important;
       align-items: center;
-      margin-top: 170px;
+      margin-top: 290px;
       gap: 100px;
+      text-align: center !important;
     }
+
     body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            background-color: black;
-            flex-direction: column !important;
-        }
-    .micss{
+   
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: black;
+      flex-direction: column !important;
+      overflow: hidden;
+      position: relative;
+      color: white;
+      display: flex;
+
+    }
+
+
+
+    .laser {
+      position: absolute;
+      top: 0;
+      width: 14px;
+      height: 100vh;
+      opacity: 0;
+      animation: moveLasers 2s infinite alternate ease-in-out, blink 1.5s infinite alternate ease-in-out;
+      filter: blur(11px);
+    }
+
+    /* 🎇 Laser Positions with More Colors */
+    .laser:nth-child(1) {
+      left: 20%;
+      animation-delay: 0s;
+      background: linear-gradient(to bottom, rgba(255, 0, 0, 0.9), rgba(255, 0, 0, 0));
+    }
+
+    .laser:nth-child(2) {
+      left: 40%;
+      animation-delay: 0.3s;
+      background: linear-gradient(to bottom, rgba(0, 255, 0, 0.9), rgba(0, 255, 0, 0));
+    }
+
+    .laser:nth-child(3) {
+      left: 60%;
+      animation-delay: 0.6s;
+      background: linear-gradient(to bottom, rgba(0, 0, 255, 0.9), rgba(0, 0, 255, 0));
+    }
+
+    .laser:nth-child(4) {
+      left: 80%;
+      animation-delay: 0.9s;
+      background: linear-gradient(to bottom, rgba(255, 255, 0, 0.9), rgba(255, 255, 0, 0));
+    }
+
+
+    /* 🔥 Animations */
+    @keyframes moveLasers {
+      0% {
+        transform: rotate(-5deg) scaleY(1);
+      }
+
+      50% {
+        transform: rotate(5deg) scaleY(1.1);
+      }
+
+      100% {
+        transform: rotate(-5deg) scaleY(1);
+      }
+    }
+
+    /* 💡 Blinking Effect */
+    @keyframes blink {
+      0% {
+        opacity: 0;
+      }
+
+      50% {
+        opacity: 1;
+      }
+
+      100% {
+        opacity: 0;
+      }
+    }
+
+    /* 🎶 Small Moving Dots */
+    .dot {
+      position: absolute;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: red;
+      box-shadow: 0 0 10px red;
+      animation: moveDots 3s infinite alternate ease-in-out;
+    }
+
+    /* Randomly place dots */
+    .dot:nth-child(5) {
+      left: 10%;
+      top: 70%;
+      animation-delay: 0s;
+      background: red;
+    }
+
+    .dot:nth-child(6) {
+      left: 30%;
+      top: 80%;
+      animation-delay: 0.5s;
+      background: green;
+    }
+
+    .dot:nth-child(7) {
+      left: 50%;
+      top: 85%;
+      animation-delay: 1s;
+      background: blue;
+    }
+
+    .dot:nth-child(8) {
+      left: 70%;
+      top: 75%;
+      animation-delay: 1.5s;
+      background: yellow;
+    }
+
+    /* 🔥 Animations */
+    @keyframes moveLasers {
+      0% {
+        transform: rotate(-5deg) scaleY(1);
+        opacity: 0.8;
+      }
+
+      50% {
+        transform: rotate(5deg) scaleY(1.1);
+        opacity: 1;
+      }
+
+      100% {
+        transform: rotate(-5deg) scaleY(1);
+        opacity: 0.8;
+      }
+    }
+
+    @keyframes moveDots {
+      0% {
+        transform: translateY(0px) scale(1);
+        opacity: 0.7;
+      }
+
+      50% {
+        transform: translateY(-10px) scale(1.2);
+        opacity: 1;
+      }
+
+      100% {
+        transform: translateY(0px) scale(1);
+        opacity: 0.7;
+      }
+    }
+
+
+    .micss {
       margin: 0 auto;
       height: 100px;
     }
+
     .mic-container {
-            position: relative;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    /* 🎤 Mic Head (Rounded) */
+    .mic {
+      width: 40px;
+      height: 60px;
+      background: conic-gradient(#4d0332, #222, #871ea1cb, rgb(14, 160, 157), pink, #871ea1cb);
+      border-radius: 50px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      box-shadow: inset 0 -4px 6px rgba(0, 0, 0, 0.5), 0 8px 10px rgba(0, 0, 0, 0.6);
+    }
+
+    /* 🎙️ Mic Inner Mesh */
+    .mic::before {
+      content: "";
+      width: 50px;
+      height: 80px;
+      background: radial-gradient(circle, rgba(65, 3, 75, 0.2) 10%, transparent 60%);
+      border-radius: 25px;
+      position: absolute;
+    }
+
+    /* 🎤 Mic Handle */
+    .handle {
+      width: 15px;
+      height: 60px;
+      background: linear-gradient(to bottom, #666, #333);
+      margin-top: -5px;
+      border-radius: 10px;
+      box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.5);
+    }
+
+    /* 🔄 Mic Base (Rounded) */
+    .base {
+      width: 50px;
+      height: 15px;
+      background: #871ea1cb;
+      border-radius: 10px;
+      margin-top: 6px;
+      box-shadow: inset 0 -2px 4px rgba(0, 0, 0, 0.5);
+    }
+
+    #sin {
+      position: absolute;
+      left: 48%;
+
+    }
+
+    .animations {
+      animation: bs 3s infinite;
+
+    }
+
+    @keyframes bs {
+      0% {
+        left: 47%;
+      }
+
+      50% {
+        left: 51%;
+      }
+
+      75% {
+        left: 45%;
+      }
+
+      100% {
+        left: 47%;
+      }
+    }
+
+    .rounds {
+      animation-name: rounds;
+      animation-duration: 2s;
+      animation-iteration-count: inherit;
+      left: 47% !important;
+    }
+
+    @keyframes rounds {
+      0% {
+        transform: translateY(-100px) rotate(0deg);
+      }
+
+      50% {
+        transform: translateY(50px) rotate(180deg);
+      }
+
+      100% {
+        transform: translateY(50px) rotate(360deg);
+      }
+    }
+
+    .lights {
+      display: none;
+    }
+    h1 {
+            font-size: 40px;
+            font-weight: bold;
+            text-transform: uppercase;
+            color: white;
+            text-shadow: 
+                0 0 10px red,
+                0 0 20px yellow,
+                0 0 30px blue,
+                0 0 40px green,
+                0 0 50px purple;
+            animation: discoShadow 2s infinite alternate ease-in-out;
+            font-family: cursive;
+            text-transform: capitalize;
         }
 
-        /* 🎤 Mic Head (Rounded) */
-        .mic {
-            width: 40px;
-            height: 60px;
-            background: conic-gradient( #4d0332, #222, #871ea1cb,rgb(14, 160, 157),pink,#871ea1cb);
-            border-radius: 50px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            position: relative;
-            box-shadow: inset 0 -4px 6px rgba(0, 0, 0, 0.5), 0 8px 10px rgba(0, 0, 0, 0.6);
+        @keyframes discoShadow {
+            0% {
+                text-shadow: 0 0 10px red, 0 0 20px yellow, 0 0 30px blue;
+            }
+            25% {
+                text-shadow: 0 0 10px green, 0 0 20px cyan, 0 0 30px pink;
+            }
+            50% {
+                text-shadow: 0 0 10px blue, 0 0 20px magenta, 0 0 30px yellow;
+            }
+            75% {
+                text-shadow: 0 0 10px purple, 0 0 20px orange, 0 0 30px lime;
+            }
+            100% {
+                text-shadow: 0 0 10px red, 0 0 20px yellow, 0 0 30px blue;
+            }
         }
-
-        /* 🎙️ Mic Inner Mesh */
-        .mic::before {
-            content: "";
-            width: 50px;
-            height: 80px;
-            background: radial-gradient(circle, rgba(65, 3, 75, 0.2) 10%, transparent 60%);
-            border-radius: 25px;
-            position: absolute;
-        }
-
-        /* 🎤 Mic Handle */
-        .handle {
-            width: 15px;
-            height: 60px;
-            background: linear-gradient(to bottom, #666, #333);
-            margin-top: -5px;
-            border-radius: 10px;
-            box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.5);
-        }
-
-        /* 🔄 Mic Base (Rounded) */
-        .base {
-            width: 50px;
-            height: 15px;
-            background: #871ea1cb;
-            border-radius: 10px;
-            margin-top: 6px;
-            box-shadow: inset 0 -2px 4px rgba(0, 0, 0, 0.5);
-        }
-        #sin{
-          position: absolute;
-        }
-        .animations{
-            animation: bs 6s infinite ;
-        }
-        @keyframes bs {
-          0%{
-            left: 40%;
-          }
-          50%{
-            left: 60%;
-          }
-          75%{
-            left: 30%;
-          }
-          100%{
-            left: 40%;
-          }
+     a{
+          font-size: 20px;
+            font-weight: bold;
+            text-transform: uppercase;
+            color: white;
+            text-shadow: 
+                0 0 10px red,
+                0 0 20px yellow,
+                0 0 30px blue,
+                0 0 40px green,
+                0 0 50px purple;
+            animation: discoShadow 2s infinite alternate ease-in-out;
+            font-family: cursive;
+            text-transform: capitalize;
+            text-align: center;
+            position:absolute;
+            right: 0px;
+            top: 20px;
+            text-decoration: none;
+          
         }
   </style>
 </head>
+
 <body>
 
-          <div class="main">
-            <div class="micss">
-            <img src="./mic.png" alt="" height="150px" id="sin">
-          </div>
-          <div class="mic-container">
-            <div class="mic"></div>
-            <div class="stand"></div>
-            <div class="base"></div>
-        </div>
+  <a href="./all.html"> see all </a>
+  <!-- Disco Light Beams -->
+  <div class="lights">
+    <div class="laser"></div>
+    <div class="laser"></div>
+    <div class="laser"></div>
+    <div class="laser"></div>
+    <div class="laser"></div>
+    <div class="laser"></div>
+    <div class="laser"></div>
+    <div class="laser"></div>
 
-                   
-          </div>
-      <script>
+    <!-- 🎇 Small Dots -->
+    <div class="dot"></div>
+    <div class="dot"></div>
+    <div class="dot"></div>
+    <div class="dot"></div>
+  </div>
+  <div class="main">
+    <div class="micss">
+      <img src="./mic.png" alt="" height="150px" id="sin">
+    </div>
+    <div class="mic-container">
+      <div class="mic"></div>
+      <div class="stand"></div>
+      <div class="base"></div>
+    </div>
+
+     <div>
+      <div id="time"> </div>
+      <h1 id="listening">listening</h1>
+   
+
+     </div>
+  </div>
+  
+  <script>
+
+    let mics = document.querySelector(".mic-container");
+    let sin = document.getElementById("sin");
+    let conditions = false;
+    let set1,set2,voicer,speech;
+    let totalseconds = 0;
+
+
+    let listens = mics.addEventListener("click", () => {
+       let lights = document.querySelector(".lights");
+       let h1 = document.querySelector("h1");
+     
+    if(!conditions){
+  
+      lights.style.display = "block"
+      h1.style.display = "block"
+       speech = new webkitSpeechRecognition();
+      speech.onresult = (event) => {
+        let speechtext = event.results[0][0].transcript;
+        localStorage.setItem("username",speechtext);
+        console.log(speechtext);
         
-           let mics = document.querySelector(".mic-container");
-           let sin = document.getElementById("sin");
-         mics.addEventListener("click",()=>{
-          let speech = new webkitSpeechRecognition();
-         speech.onresult = (event)=>{
-          console.log(event.results[0][0].transcript);
-         }
-         speech.start();
-         sin.style.left = "40%";
-         sin.classList.add("animations");
-
-         setTimeout(() => {
-            sin.style.transform = `[rotate:450]`
-         }, timeout);
+      }
+      
+      speech.start();
+      sin.classList.add("animations");
 
 
 
-         })
+      set1 =    setTimeout(() => {
+        sin.classList.remove("animations");
+        sin.classList.add("rounds");
+       }, 4000)
+
+
+     set2 =  setTimeout(() => {
+        sin.style.transform = `rotateY(180deg)`;
+        sin.classList.remove("rounds");
+        sin.classList.add("animations");
+      }, 6000);
+     
+
+    
+        voicer = setInterval(()=>{
+     
+        let hours = Math.floor(totalseconds/3600);
+        let minutes = Math.floor((totalseconds % 3600) / 60); // Convert to minutes
+        let seconds = totalseconds % 60;  // Remaining seconds
           
-      </script>
+        let formatedtime = String(hours).padStart(2,"0")+":"+String(minutes).padStart(2,"0")+":"+String(seconds).padStart(2,"0");
+       document.getElementById("time").innerText = formatedtime;
+       totalseconds++;
+    },1000);
+    conditions = true;
+ }
+
+    else{
+            lights.style.display = "none"
+            clearTimeout(set1);
+            clearTimeout(set2);
+            clearInterval(voicer);
+          
+            speech.stop();  // 🛑 Stop Speech Recognition
+            sin.classList.remove("animations");
+            sin.classList.remove("rounds");
+            sin.style.transform = "rotateY(0deg)";
+            conditions = false;
+
+     }
+
+   
+
+    
+
+    })
+
+  
+
+   
+
+
+   
+    
+  
+
+
+
+
+  </script>
 </body>
+
 </html>
