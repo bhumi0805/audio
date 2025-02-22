@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+   .main{
+      /* background: linear-gradient(black,rgba(0, 0, 0, 0.467)),url(./musician-isolated-dark-studio-neon-light_155003-34035.jpg); */
+    
+      background-repeat: no-repeat;
+      background-size: cover;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      flex-direction: column !important;
+      align-items: center;
+      margin-top: 170px;
+      gap: 100px;
+    }
+    body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: black;
+            flex-direction: column !important;
+        }
+    .micss{
+      margin: 0 auto;
+      height: 100px;
+    }
+    .mic-container {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* 🎤 Mic Head (Rounded) */
+        .mic {
+            width: 40px;
+            height: 60px;
+            background: conic-gradient( #4d0332, #222, #871ea1cb,rgb(14, 160, 157),pink,#871ea1cb);
+            border-radius: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            box-shadow: inset 0 -4px 6px rgba(0, 0, 0, 0.5), 0 8px 10px rgba(0, 0, 0, 0.6);
+        }
+
+        /* 🎙️ Mic Inner Mesh */
+        .mic::before {
+            content: "";
+            width: 50px;
+            height: 80px;
+            background: radial-gradient(circle, rgba(65, 3, 75, 0.2) 10%, transparent 60%);
+            border-radius: 25px;
+            position: absolute;
+        }
+
+        /* 🎤 Mic Handle */
+        .handle {
+            width: 15px;
+            height: 60px;
+            background: linear-gradient(to bottom, #666, #333);
+            margin-top: -5px;
+            border-radius: 10px;
+            box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.5);
+        }
+
+        /* 🔄 Mic Base (Rounded) */
+        .base {
+            width: 50px;
+            height: 15px;
+            background: #871ea1cb;
+            border-radius: 10px;
+            margin-top: 6px;
+            box-shadow: inset 0 -2px 4px rgba(0, 0, 0, 0.5);
+        }
+        #sin{
+          position: absolute;
+        }
+        .animations{
+            animation: bs 6s infinite ;
+        }
+        @keyframes bs {
+          0%{
+            left: 40%;
+          }
+          50%{
+            left: 60%;
+          }
+          75%{
+            left: 30%;
+          }
+          100%{
+            left: 40%;
+          }
+        }
+  </style>
+</head>
+<body>
+
+          <div class="main">
+            <div class="micss">
+            <img src="./mic.png" alt="" height="150px" id="sin">
+          </div>
+          <div class="mic-container">
+            <div class="mic"></div>
+            <div class="stand"></div>
+            <div class="base"></div>
+        </div>
+
+                   
+          </div>
+      <script>
+        
+           let mics = document.querySelector(".mic-container");
+           let sin = document.getElementById("sin");
+         mics.addEventListener("click",()=>{
+          let speech = new webkitSpeechRecognition();
+         speech.onresult = (event)=>{
+          console.log(event.results[0][0].transcript);
+         }
+         speech.start();
+         sin.style.left = "40%";
+         sin.classList.add("animations");
+
+         setTimeout(() => {
+            sin.style.transform = `[rotate:450]`
+         }, timeout);
+
+
+
+         })
+          
+      </script>
+</body>
+</html>
